@@ -14,7 +14,9 @@ from mynet import AlexNet
 import tensorflow as tf
 
 def main(args):
+
     
+    #using random images for testing
     X = np.random.randint(0,255,size=[1200,224,224,3])
     Y = np.random.randint(0,2,size=[1200,1000])
     

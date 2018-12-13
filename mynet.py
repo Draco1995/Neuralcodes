@@ -71,11 +71,6 @@ class AlexNet():
                                              name="MaxPooling5")
         maxPooling5 = MaxPooling5(conv5)
         relu5 = tf.nn.relu(maxPooling5)
-        self.print = tf.shape(conv1)
-        self.print2 = tf.shape(conv2)
-        self.print3 = tf.shape(conv3)
-        self.print4 = tf.shape(conv4)
-        self.print5 = tf.shape(conv5)
         relu5_flat = tf.reshape(relu5,[-1, 6 * 6 * 256])
         
         Dense6 = tf.layers.Dense(units=4096,
@@ -107,7 +102,6 @@ class AlexNet():
             self.sess.run(self.init)
             
         for epoch in range(n_epochs):
-            print(self.sess.run([self.print,self.print2,self.print3,self.print4,self.print5],feed_dict={self.x: X, self.y:Y,self.mode:True}))
             _,c = self.sess.run([self.train_op,self.loss_op],feed_dict={self.x: X, self.y:Y,self.mode:True})
             if epoch % 3 == 0:
                 print("Epoch:",(epoch+1), "cost=", format(c))
